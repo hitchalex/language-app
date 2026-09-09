@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-duo-bg text-duo-text font-sans;
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+}
+
+.bg-gradient-primary { background: linear-gradient(135deg, #1CB0F6 0%, #6366F1 100%); }
+.bg-gradient-secondary { background: linear-gradient(135deg, #A855F7 0%, #EC4899 100%); }
+.bg-gradient-warm { background: linear-gradient(135deg, #FF8C42 0%, #EC4899 100%); }
+.bg-gradient-fresh { background: linear-gradient(135deg, #22C55E 0%, #14B8A6 100%); }
+.bg-gradient-sunny { background: linear-gradient(135deg, #FBBF24 0%, #FF8C42 100%); }
+
+.flip-card { perspective: 1000px; }
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.flip-card-inner.flipped { transform: rotateY(180deg); }
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.flip-card-back { transform: rotateY(180deg); }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
+
+@keyframes pulse-blue {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(28, 176, 246, 0.7); }
+  50% { box-shadow: 0 0 0 15px rgba(28, 176, 246, 0); }
+}
+.animate-pulse-blue { animation: pulse-blue 1.5s infinite; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up { animation: slideUp 0.6s ease-out forwards; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+  20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+.animate-shake { animation: shake 0.5s ease-in-out; }
+
+@keyframes celebrate {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.2) rotate(-5deg); }
+  50% { transform: scale(1.2) rotate(5deg); }
+  75% { transform: scale(1.1) rotate(-3deg); }
+  100% { transform: scale(1); }
+}
+.animate-celebrate { animation: celebrate 0.8s ease-in-out; }
+
+@keyframes bounce-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-bounce-soft { animation: bounce-soft 2s ease-in-out infinite; }
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  z-index: 9999;
+  pointer-events: none;
+  animation: confetti-fall 3s linear forwards;
+}
+
+.progress-bar-animated { transition: width 0.5s cubic-bezier(0.4, 0.0, 0.2, 1); }
+
+.btn-3d { transition: all 0.1s ease; }
+.btn-3d:active {
+  transform: translateY(3px);
+  box-shadow: none !important;
+}
+
+.badge-a1 { background: linear-gradient(135deg, #1CB0F6, #6366F1); color: white; }
+.badge-a2 { background: linear-gradient(135deg, #22C55E, #14B8A6); color: white; }
+.badge-b1 { background: linear-gradient(135deg, #FF8C42, #EC4899); color: white; }
+.badge-b2 { background: linear-gradient(135deg, #EC4899, #A855F7); color: white; }
+.badge-c1 { background: linear-gradient(135deg, #A855F7, #6366F1); color: white; }
+.badge-c2 { background: linear-gradient(135deg, #FBBF24, #FF8C42); color: white; }
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+/* Add this to fix the layout */
+body {
+  margin: 0;
+  padding: 0;
+  background: #f7f9fc;
+}
+
+/* Main app container - center it on desktop */
+#root {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: white;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* Fix bottom navigation */
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  background: white;
+  border-top: 2px solid #e5e7eb;
+  padding: 0.5rem 0;
+  z-index: 50;
+}
+
+/* Main content area - add padding for bottom nav */
+main {
+  padding-bottom: 100px;
+}
+
+/* Fix card layout */
+.flip-card {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Fix buttons spacing */
+button {
+  margin: 0.25rem;
+}
+
+/* Prevent overlapping */
+* {
+  box-sizing: border-box;
+}
